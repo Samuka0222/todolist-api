@@ -17,7 +17,7 @@ export class CreateTaskController implements IController {
       if (!accountId) {
         throw new AccountNotFound();
       }
-      const newTask = await this.createTaskUseCase.execute({
+      await this.createTaskUseCase.execute({
         description,
         accountId,
       });
