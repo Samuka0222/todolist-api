@@ -21,11 +21,15 @@
     "husky": "^9.0.11",
     "lint-staged": "^15.2.2",
     "prettier": "^3.2.5",
+    "prisma": "^5.13.0",
     "tsx": "^4.7.3",
     "typescript": "*"
   },
   "scripts": {
     "dev": "tsc --watch src/index.ts",
     "prepare": "husky"
+  },
+  "dependencies": {
+    "@prisma/client": "^5.13.0"
   }
 }
