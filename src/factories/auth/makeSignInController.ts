@@ -1,4 +1,4 @@
-import { SignInController } from '../app/controllers/SignInController';
+import { SignInController } from '../../app/controllers/auth/SignInController';
 import { makeSignInUsecase } from './makeSignInUseCase';
 
 export function makeSignInController() {
