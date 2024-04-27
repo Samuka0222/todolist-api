@@ -3,6 +3,8 @@ import { makeSignInController } from '../factories/auth/makeSignInController';
 import { makeSignUpController } from '../factories/auth/makeSignUpController';
 import { makeAuthenticationMiddleware } from '../factories/middlewares/makeAuthenticationMiddleware';
 import { makeCreateTaskController } from '../factories/tasks/makeCreateTaskController';
+import { makeGetTasksByAccountController } from '../factories/tasks/makeGetTasksByAccountController';
+import { makeUpdateTaskController } from '../factories/tasks/makeUpdateTaskController';
 import { makeDeleteAccountController } from '../factories/users/makeDeleteAccountController';
 import { makeGetAccountByIdController } from '../factories/users/makeGetAccountByIdController';
 import { makeGetAccountsController } from '../factories/users/makeGetAccountsController';
@@ -40,10 +42,20 @@ app.delete(
 );
 
 // Tasks CRUD
+app.get(
+  '/tasks/:accountId',
+  middlewareAdapter(makeAuthenticationMiddleware()),
+  routeAdapter(makeGetTasksByAccountController()),
+);
 app.post(
-  '/tasks',
+  '/tasks/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
   routeAdapter(makeCreateTaskController()),
+);
+app.put(
+  '/tasks/:taskId',
+  middlewareAdapter(makeAuthenticationMiddleware()),
+  routeAdapter(makeUpdateTaskController()),
 );
 
 app.listen(3001, () => {

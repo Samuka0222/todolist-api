@@ -9,10 +9,10 @@ const schema = z.object({
 
 export class CreateTaskController implements IController {
   constructor(private readonly createTaskUseCase: CreateTaskUseCase) {}
-  async handle({ body, accountId }: IRequest): Promise<IResponse> {
+  async handle({ body, params }: IRequest): Promise<IResponse> {
     try {
-      // console.log(body, accountId)
       const { description } = schema.parse(body);
+      const { accountId } = params;
 
       if (!accountId) {
         throw new AccountNotFound();
