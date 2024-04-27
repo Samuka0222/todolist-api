@@ -4,7 +4,9 @@ import { makeSignUpController } from '../factories/auth/makeSignUpController';
 import { makeAuthenticationMiddleware } from '../factories/middlewares/makeAuthenticationMiddleware';
 import { makeCreateTaskController } from '../factories/tasks/makeCreateTaskController';
 import { makeDeleteAccountController } from '../factories/users/makeDeleteAccountController';
+import { makeGetAccountByIdController } from '../factories/users/makeGetAccountByIdController';
 import { makeGetAccountsController } from '../factories/users/makeGetAccountsController';
+import { makeUpdateAccountController } from '../factories/users/makeUpdateAccountController';
 import { middlewareAdapter } from './adapters/middlewareAdapter';
 import { routeAdapter } from './adapters/routeAdapter';
 
@@ -20,6 +22,16 @@ app.get(
   '/accounts',
   middlewareAdapter(makeAuthenticationMiddleware()),
   routeAdapter(makeGetAccountsController()),
+);
+app.get(
+  '/accounts/:accountId',
+  middlewareAdapter(makeAuthenticationMiddleware()),
+  routeAdapter(makeGetAccountByIdController()),
+);
+app.put(
+  '/accounts/:accountId',
+  middlewareAdapter(makeAuthenticationMiddleware()),
+  routeAdapter(makeUpdateAccountController()),
 );
 app.delete(
   '/accounts/:accountId',
