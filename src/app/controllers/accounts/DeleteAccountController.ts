@@ -1,6 +1,6 @@
 import { AccountNotFound } from '../../errors/AccountNotFound';
 import { IController, IRequest, IResponse } from '../../interfaces/IController';
-import { DeleteAccountUseCase } from '../../useCases/users/DeleteAccountUseCase';
+import { DeleteAccountUseCase } from '../../useCases/accounts/DeleteAccountUseCase';
 
 export class DeleteAccountController implements IController {
   constructor(private readonly deleteAccountUseCase: DeleteAccountUseCase) {}

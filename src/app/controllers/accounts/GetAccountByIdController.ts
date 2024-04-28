@@ -1,5 +1,5 @@
 import { IController, IRequest, IResponse } from '../../interfaces/IController';
-import { GetAccountByIdUseCase } from '../../useCases/users/GetAccountByIdUseCase';
+import { GetAccountByIdUseCase } from '../../useCases/accounts/GetAccountByIdUseCase';
 
 export class GetAccountByIdController implements IController {
   constructor(private readonly getAccountByIdUseCase: GetAccountByIdUseCase) {}

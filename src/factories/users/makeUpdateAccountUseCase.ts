@@ -1,4 +1,4 @@
-import { UpdateAccountUseCase } from '../../app/useCases/users/UpdateAccountUseCase';
+import { UpdateAccountUseCase } from '../../app/useCases/accounts/UpdateAccountUseCase';
 
 export function makeUpdateAccountUseCase() {
   return new UpdateAccountUseCase();

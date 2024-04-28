@@ -1,4 +1,4 @@
-import { UpdateAccountController } from '../../app/controllers/users/UpdateAccountController';
+import { UpdateAccountController } from '../../app/controllers/accounts/UpdateAccountController';
 import { makeUpdateAccountUseCase } from './makeUpdateAccountUseCase';
 
 export function makeUpdateAccountController() {

@@ -1,7 +1,7 @@
 import { ZodError, z } from 'zod';
 import { AccountNotFound } from '../../errors/AccountNotFound';
 import { IController, IRequest, IResponse } from '../../interfaces/IController';
-import { UpdateAccountUseCase } from '../../useCases/users/UpdateAccountUseCase';
+import { UpdateAccountUseCase } from '../../useCases/accounts/UpdateAccountUseCase';
 
 const schema = z.object({
   name: z.string().min(2).optional(),

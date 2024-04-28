@@ -1,4 +1,4 @@
-import { DeleteAccountController } from '../../app/controllers/users/DeleteAccountController';
+import { DeleteAccountController } from '../../app/controllers/accounts/DeleteAccountController';
 import { makeDeleteAccountUseCase } from './makeDeleteAccountUseCase';
 
 export function makeDeleteAccountController() {

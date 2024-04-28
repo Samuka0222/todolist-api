@@ -1,4 +1,4 @@
-import { GetAccountByIdController } from '../../app/controllers/users/GetAccountByIdController';
+import { GetAccountByIdController } from '../../app/controllers/accounts/GetAccountByIdController';
 import { makeGetAccountByIdUseCase } from './makeGetAccountByIdUseCase';
 
 export function makeGetAccountByIdController() {
