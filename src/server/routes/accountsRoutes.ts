@@ -1,9 +1,9 @@
 import { Router } from 'express';
+import { makeDeleteAccountController } from '../../factories/accounts/makeDeleteAccountController';
+import { makeGetAccountByIdController } from '../../factories/accounts/makeGetAccountByIdController';
+import { makeGetAccountsController } from '../../factories/accounts/makeGetAccountsController';
+import { makeUpdateAccountController } from '../../factories/accounts/makeUpdateAccountController';
 import { makeAuthenticationMiddleware } from '../../factories/middlewares/makeAuthenticationMiddleware';
-import { makeDeleteAccountController } from '../../factories/users/makeDeleteAccountController';
-import { makeGetAccountByIdController } from '../../factories/users/makeGetAccountByIdController';
-import { makeGetAccountsController } from '../../factories/users/makeGetAccountsController';
-import { makeUpdateAccountController } from '../../factories/users/makeUpdateAccountController';
 import { middlewareAdapter } from '../adapters/middlewareAdapter';
 import { protectedRouteAdapter } from '../adapters/protectedRouteAdapter';
 
