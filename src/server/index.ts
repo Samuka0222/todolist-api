@@ -12,62 +12,65 @@ import { makeGetAccountByIdController } from '../factories/users/makeGetAccountB
 import { makeGetAccountsController } from '../factories/users/makeGetAccountsController';
 import { makeUpdateAccountController } from '../factories/users/makeUpdateAccountController';
 import { middlewareAdapter } from './adapters/middlewareAdapter';
-import { routeAdapter } from './adapters/routeAdapter';
+import { protectedRouteAdapter } from './adapters/protectedRouteAdapter';
+import { unprotectedRouteAdapter } from './adapters/routeAdapter';
 
 const app = express();
 app.use(express.json());
 
+// TODO: Organizar as rotas em um arquivo próprio.
+
 // Sign in and Sign Up
-app.post('/sign-up', routeAdapter(makeSignUpController()));
-app.post('/sign-in', routeAdapter(makeSignInController()));
+app.post('/sign-up', unprotectedRouteAdapter(makeSignUpController()));
+app.post('/sign-in', unprotectedRouteAdapter(makeSignInController()));
 
 // Account CRUD
 app.get(
   '/accounts',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeGetAccountsController()),
+  protectedRouteAdapter(makeGetAccountsController()),
 );
 app.get(
   '/accounts/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeGetAccountByIdController()),
+  protectedRouteAdapter(makeGetAccountByIdController()),
 );
 app.put(
   '/accounts/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeUpdateAccountController()),
+  protectedRouteAdapter(makeUpdateAccountController()),
 );
 app.delete(
   '/accounts/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeDeleteAccountController()),
+  protectedRouteAdapter(makeDeleteAccountController()),
 );
 
 // Tasks CRUD
 app.get(
   '/tasks/account/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeGetTasksByAccountController()),
+  protectedRouteAdapter(makeGetTasksByAccountController()),
 );
 app.get(
   '/tasks/:taskId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeGetTaskByIdController()),
+  protectedRouteAdapter(makeGetTaskByIdController()),
 );
 app.post(
   '/tasks/:accountId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeCreateTaskController()),
+  protectedRouteAdapter(makeCreateTaskController()),
 );
 app.put(
   '/tasks/:taskId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeUpdateTaskController()),
+  protectedRouteAdapter(makeUpdateTaskController()),
 );
 app.delete(
   '/tasks/:taskId',
   middlewareAdapter(makeAuthenticationMiddleware()),
-  routeAdapter(makeDeleteTaskController()),
+  protectedRouteAdapter(makeDeleteTaskController()),
 );
 
 app.listen(3001, () => {
